@@ -1,8 +1,8 @@
-sumAll :: [Int] -> Int
-sumAll [] = 0
-sumAll (x:xs) = x + sumAll(xs)
 
 finalGrade :: [Int] -> [Int] -> Int
 finalGrade [] [] = 0
-finalGrade (x:xs) (y:ys) = preDiv `div` (sumAll(ys))
-  where preDiv = ((x * y) + (finalGrade(xs) (ys)))
+finalGrade (x:xs) (y:ys) = multAll(x:xs) (y:ys) `div` sum(y:ys)
+
+multAll :: [Int] -> [Int] -> Int
+multAll [] [] = 1
+multAll (x:xs) (y:ys) = x * y + multAll(xs) (ys)
